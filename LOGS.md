@@ -26,3 +26,4 @@
 
 9. Installed pwsh support, removed the old workspace path at C:\sourcecode\github\copilot\moo-ui, initialized a standalone git repository in C:\sourcecode\github\copilot\workspaces\moo-ui, and prepared the GitHub remote https://github.com/mootp/moo-ui.git.
 10. Adjusted the GitHub Pages workflow documentation after the first workflow run failed at `actions/configure-pages@v5` with `404 Not Found`; the repository still needs the one-time **Settings > Pages > Source: GitHub Actions** enablement in GitHub before the workflow can succeed.
+11. Updated the workspace `typescript` devDependency from `~5.7.0` to `~5.9.2` to satisfy the Angular 21 build toolchain peer dependency required by `@angular-devkit/build-angular`.
