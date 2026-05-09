@@ -1,0 +1,33 @@
+<div class="moo-checkbox-field" [class.is-disabled]="disabled() || isDisabled()">
+  <label [class]="wrapperClass()" [attr.for]="resolvedInputId()">
+    <span class="moo-checkbox__control-shell">
+      <input
+        [id]="resolvedInputId()"
+        class="moo-checkbox__native"
+        type="checkbox"
+        [checked]="checked()"
+        [disabled]="disabled() || isDisabled()"
+        [attr.aria-describedby]="describedBy()"
+        [attr.aria-invalid]="!!error()"
+        [attr.aria-readonly]="readonly() || null"
+        (change)="onCheckedChange($event)"
+        (blur)="markTouched()"
+      />
+      <span class="moo-checkbox__control" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
+          <path d="m5 10 3 3 7-7" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </span>
+    </span>
+
+    @if (label()) {
+      <span class="moo-checkbox__text">{{ label() }}</span>
+    }
+  </label>
+
+  @if (error()) {
+    <p class="moo-checkbox-field__message moo-checkbox-field__message--error" [id]="errorId" role="alert">{{ error() }}</p>
+  } @else if (hint()) {
+    <p class="moo-checkbox-field__message moo-checkbox-field__message--hint" [id]="hintId">{{ hint() }}</p>
+  }
+</div>

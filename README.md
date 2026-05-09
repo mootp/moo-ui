@@ -25,8 +25,16 @@
 | <img src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/svgs/solid/spinner.svg" alt="" width="14" height="14"> Spinner | `<moo-spinner>` | ✅ |
 | <img src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/svgs/solid/user.svg" alt="" width="14" height="14"> Avatar | `<moo-avatar>` | ✅ |
 | <img src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/svgs/solid/window-restore.svg" alt="" width="14" height="14"> Modal | `<moo-modal>` | ✅ |
+| <img src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/svgs/solid/square-caret-down.svg" alt="" width="14" height="14"> Select | `<moo-select>` | ✅ |
+| <img src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/svgs/solid/align-left.svg" alt="" width="14" height="14"> Textarea | `<moo-textarea>` | ✅ |
+| <img src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/svgs/solid/square-check.svg" alt="" width="14" height="14"> Checkbox | `<moo-checkbox>` | ✅ |
+| <img src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/svgs/solid/circle-dot.svg" alt="" width="14" height="14"> Radio | `<moo-radio>` | ✅ |
+| <img src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/svgs/solid/toggle-on.svg" alt="" width="14" height="14"> Toggle | `<moo-toggle>` | ✅ |
+| <img src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/svgs/solid/bars.svg" alt="" width="14" height="14"> Dropdown / Menu | `<moo-dropdown>` | ✅ |
+| <img src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/svgs/solid/comment-dots.svg" alt="" width="14" height="14"> Tooltip | `<moo-tooltip>` | ✅ |
+| <img src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/svgs/solid/bell.svg" alt="" width="14" height="14"> Toast | `<moo-toast-viewport>` + `MooToastService` | ✅ |
 
-Planned next wave: Tooltip, Dropdown, Select, Table, Tabs, Accordion, Toast.
+Planned next wave: Table, Tabs, Accordion.
 
 ## <img src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/svgs/solid/download.svg" alt="" width="16" height="16"> Installation
 
@@ -171,6 +179,107 @@ Implements `ControlValueAccessor` – works with both template-driven and reacti
 </moo-modal>
 ```
 
+### Select
+
+```html
+<moo-select
+  label="Owning team"
+  placeholder="Choose a team"
+  hint="Supports ngModel and reactive forms."
+  size="md"
+  [options]="teamOptions"
+  [(ngModel)]="team"
+/>
+```
+
+### Textarea
+
+```html
+<moo-textarea
+  label="Notes"
+  hint="Use for longer free-form content."
+  [rows]="5"
+  size="md"
+  [(ngModel)]="notes"
+/>
+```
+
+### Checkbox
+
+```html
+<moo-checkbox
+  label="Include private notes"
+  hint="Visible to admins only."
+  [(ngModel)]="includePrivateNotes"
+/>
+```
+
+### Radio
+
+```html
+<moo-radio
+  label="Notification channel"
+  hint="Arrow keys move through the group."
+  [options]="notificationOptions"
+  [(ngModel)]="channel"
+/>
+```
+
+### Toggle
+
+```html
+<moo-toggle
+  label="Incident digest"
+  hint="Turns daily summary delivery on or off."
+  [(ngModel)]="digestEnabled"
+/>
+```
+
+### Dropdown / Menu
+
+```html
+<moo-dropdown
+  label="Quick actions"
+  buttonLabel="Open actions"
+  hint="Explicit menu overlay with keyboard support."
+  [items]="menuItems"
+  (itemSelected)="handleAction($event)"
+/>
+```
+
+### Tooltip
+
+```html
+<moo-tooltip text="Hover or focus to see more context." placement="top-start">
+  <moo-button variant="outline">Info</moo-button>
+</moo-tooltip>
+```
+
+### Toast
+
+```typescript
+import { ButtonComponent, MooToastService, ToastViewportComponent } from '@mootp/moo-ui';
+
+@Component({
+  imports: [ButtonComponent, ToastViewportComponent],
+  template: `
+    <moo-toast-viewport />
+    <moo-button (clicked)="notify()">Show toast</moo-button>
+  `,
+})
+export class ExampleComponent {
+  constructor(private readonly toastService: MooToastService) {}
+
+  notify(): void {
+    this.toastService.show({
+      variant: 'success',
+      title: 'Saved',
+      message: 'The workspace preferences were updated.',
+    });
+  }
+}
+```
+
 ## <img src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/svgs/solid/palette.svg" alt="" width="16" height="16"> Design Tokens
 
 All visual properties are driven by CSS custom properties defined in `themes/default.css`.
@@ -234,7 +343,7 @@ Then upload the contents of `dist/github-pages` to your Pages target.
 This environment could not create or push a repo directly, so run these commands locally if `moo-ui` still needs its own standalone repository:
 
 ```bash
-cd C:\sourcecode\github\copilot\moo-ui
+cd C:\sourcecode\github\copilot\workspaces\moo-ui
 git init -b main
 git add .
 git commit -m "Prepare Angular demo for GitHub Pages"

@@ -1,0 +1,59 @@
+@use '../shared/styles/form-field' as form;
+
+.moo-select-field {
+  @include form.field-wrapper;
+
+  &__label {
+    @include form.field-label;
+  }
+
+  &__control {
+    position: relative;
+  }
+
+  &__message {
+    @include form.field-message;
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    right: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1rem;
+    height: 1rem;
+    color: var(--moo-color-foreground-muted);
+    transform: translateY(-50%);
+    pointer-events: none;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.moo-select {
+  @include form.control-base;
+  appearance: none;
+  padding-right: 2.5rem;
+
+  &--sm { @include form.control-size(sm); }
+  &--md { @include form.control-size(md); }
+  &--lg { @include form.control-size(lg); }
+
+  &.has-error {
+    border-color: var(--moo-color-danger);
+
+    &:focus-visible {
+      box-shadow: 0 0 0 3px rgb(239 68 68 / 0.2);
+    }
+  }
+
+  &.is-readonly {
+    cursor: default;
+    background-color: var(--moo-color-surface);
+  }
+}

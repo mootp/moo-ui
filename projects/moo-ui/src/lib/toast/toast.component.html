@@ -1,0 +1,14 @@
+<article class="moo-toast" [class]="'moo-toast moo-toast--' + toast().variant" role="status" aria-live="polite">
+  <div class="moo-toast__content">
+    @if (toast().title) {
+      <div class="moo-toast__title">{{ toast().title }}</div>
+    }
+    <div class="moo-toast__message">{{ toast().message }}</div>
+  </div>
+
+  <button type="button" class="moo-toast__close" (click)="dismiss()" aria-label="Dismiss notification">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 18 6M6 6l12 12" />
+    </svg>
+  </button>
+</article>

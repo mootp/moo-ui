@@ -1,0 +1,28 @@
+<div class="moo-textarea-field" [class.is-disabled]="disabled() || isDisabled()">
+  @if (label()) {
+    <label class="moo-textarea-field__label" [class.is-required]="required()" [attr.for]="resolvedInputId()">
+      {{ label() }}
+    </label>
+  }
+
+  <textarea
+    [id]="resolvedInputId()"
+    [class]="textareaClass()"
+    [placeholder]="placeholder()"
+    [disabled]="disabled() || isDisabled()"
+    [attr.readonly]="readonly() || null"
+    [required]="required()"
+    [rows]="rows()"
+    [value]="value()"
+    [attr.aria-describedby]="describedBy()"
+    [attr.aria-invalid]="!!error()"
+    (input)="onValueChange($event)"
+    (blur)="markTouched()"
+  ></textarea>
+
+  @if (error()) {
+    <p class="moo-textarea-field__message moo-textarea-field__message--error" [id]="errorId" role="alert">{{ error() }}</p>
+  } @else if (hint()) {
+    <p class="moo-textarea-field__message moo-textarea-field__message--hint" [id]="hintId">{{ hint() }}</p>
+  }
+</div>

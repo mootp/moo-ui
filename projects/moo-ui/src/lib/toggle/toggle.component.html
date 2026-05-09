@@ -1,0 +1,35 @@
+<div class="moo-toggle-field" [class.is-disabled]="disabled() || isDisabled()">
+  <label [class]="wrapperClass()" [attr.for]="resolvedInputId()">
+    <span class="moo-toggle__control-shell">
+      <input
+        [id]="resolvedInputId()"
+        class="moo-toggle__native"
+        type="checkbox"
+        role="switch"
+        [checked]="checked()"
+        [disabled]="disabled() || isDisabled()"
+        [attr.aria-describedby]="describedBy()"
+        [attr.aria-invalid]="!!error()"
+        [attr.aria-readonly]="readonly() || null"
+        (change)="onCheckedChange($event)"
+        (blur)="markTouched()"
+      />
+      <span class="moo-toggle__track" aria-hidden="true">
+        <span class="moo-toggle__thumb"></span>
+      </span>
+    </span>
+
+    <span class="moo-toggle__content">
+      @if (label()) {
+        <span class="moo-toggle__text">{{ label() }}</span>
+      }
+      @if (hint() && !error()) {
+        <span class="moo-toggle__hint">{{ hint() }}</span>
+      }
+    </span>
+  </label>
+
+  @if (error()) {
+    <p class="moo-toggle-field__message moo-toggle-field__message--error" [id]="errorId" role="alert">{{ error() }}</p>
+  }
+</div>

@@ -1,0 +1,5 @@
+<div class="moo-toast-viewport" [class]="'moo-toast-viewport moo-toast-viewport--' + position()" aria-live="polite" aria-atomic="true">
+  @for (toast of toastService.toasts(); track toast.id) {
+    <moo-toast [toast]="toast" (dismissed)="toastService.dismiss($event)" />
+  }
+</div>

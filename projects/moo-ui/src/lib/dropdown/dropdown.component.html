@@ -1,0 +1,60 @@
+<div class="moo-dropdown" [class.is-disabled]="disabled()">
+  @if (label()) {
+    <span class="moo-dropdown__label">{{ label() }}</span>
+  }
+
+  <button
+    #trigger
+    [id]="triggerId"
+    type="button"
+    [class]="triggerClass()"
+    [disabled]="disabled()"
+    [attr.aria-controls]="menuId"
+    [attr.aria-describedby]="describedBy()"
+    [attr.aria-expanded]="isOpen()"
+    aria-haspopup="menu"
+    (click)="toggleMenu()"
+    (keydown)="onTriggerKeydown($event)"
+  >
+    <span class="moo-dropdown__trigger-text">{{ buttonLabel() }}</span>
+    <svg class="moo-dropdown__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+      <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 011.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+    </svg>
+  </button>
+
+  @if (isOpen()) {
+    <div
+      #panel
+      class="moo-dropdown__menu"
+      [id]="menuId"
+      role="menu"
+      [style.top.px]="overlayTop()"
+      [style.left.px]="overlayLeft()"
+      [style.min-width.px]="overlayMinWidth()"
+      (keydown)="onMenuKeydown($event)"
+    >
+      @for (item of items(); track item.id ?? item.label; let index = $index) {
+        <button
+          [id]="getItemId(index)"
+          type="button"
+          class="moo-dropdown__item"
+          [class.is-active]="activeIndex() === index"
+          [class.is-danger]="item.danger"
+          [disabled]="item.disabled"
+          role="menuitem"
+          (mouseenter)="onItemHover(index)"
+          (click)="onItemSelect(item)"
+        >
+          <span class="moo-dropdown__item-label">{{ item.label }}</span>
+          @if (item.description) {
+            <span class="moo-dropdown__item-description">{{ item.description }}</span>
+          }
+        </button>
+      }
+    </div>
+  }
+
+  @if (hint()) {
+    <p class="moo-dropdown__hint" [id]="hintId">{{ hint() }}</p>
+  }
+</div>

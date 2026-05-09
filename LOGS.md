@@ -28,3 +28,7 @@
 10. Adjusted the GitHub Pages workflow documentation after the first workflow run failed at `actions/configure-pages@v5` with `404 Not Found`; the repository still needs the one-time **Settings > Pages > Source: GitHub Actions** enablement in GitHub before the workflow can succeed.
 11. Updated the workspace `typescript` devDependency from `~5.7.0` to `~5.9.2` to satisfy the Angular 21 build toolchain peer dependency required by `@angular-devkit/build-angular`.
 12. Fixed the demo Pages build by removing the invalid TypeScript `ignoreDeprecations` setting and loading the library design-token CSS through `angular.json` instead of a deprecated Sass `@import`.
+13. Upgraded `karma-jasmine-html-reporter` to `~2.2.0`, refreshed `package-lock.json`, and kept the workspace on the current Tailwind major version.
+14. Added Phase 1 Angular 21 standalone components for `Select`, `Textarea`, `Checkbox`, `Radio`, `Toggle`, `Dropdown`, `Tooltip`, and `Toast`, plus shared form-field and overlay utilities for consistent APIs and keyboard behavior.
+15. Updated public exports, demo usage, and README inventory/API docs so the new components are available from the library barrel and visible in the demo experience.
+16. Validated the library build with `npm run build`, the demo/pages artifact with `npm run build:pages`, and unit coverage with `npm test -- --watch=false --browsers=ChromeHeadless` (4 passing specs).

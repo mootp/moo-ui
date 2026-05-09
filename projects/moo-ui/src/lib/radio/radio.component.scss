@@ -1,0 +1,128 @@
+@use '../shared/styles/form-field' as form;
+
+.moo-radio-group {
+  @include form.field-wrapper;
+
+  &__label {
+    @include form.field-label;
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  &.is-inline &__options {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  &__message {
+    @include form.field-message;
+  }
+
+  &.has-error .moo-radio__control {
+    border-color: var(--moo-color-danger);
+  }
+
+  &--sm .moo-radio {
+    font-size: var(--moo-font-size-xs);
+  }
+
+  &--sm .moo-radio__control {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  &--md .moo-radio {
+    font-size: var(--moo-font-size-sm);
+  }
+
+  &--md .moo-radio__control {
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+
+  &--lg .moo-radio {
+    font-size: var(--moo-font-size-base);
+  }
+
+  &--lg .moo-radio__control {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+
+.moo-radio {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  cursor: pointer;
+  font-family: var(--moo-font-sans);
+  color: var(--moo-color-foreground);
+
+  &.is-disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &__control-shell {
+    position: relative;
+    display: inline-flex;
+    margin-top: 0.125rem;
+  }
+
+  &__native {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    margin: 0;
+    cursor: inherit;
+
+    &:focus-visible + .moo-radio__control {
+      box-shadow: 0 0 0 3px rgb(59 130 246 / 0.2);
+      border-color: var(--moo-color-primary);
+    }
+
+    &:checked + .moo-radio__control::after {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  &__control {
+    position: relative;
+    display: inline-flex;
+    border: 1px solid var(--moo-color-border-strong);
+    border-radius: var(--moo-radius-full);
+    background-color: var(--moo-color-background);
+    transition: border-color var(--moo-transition-base), box-shadow var(--moo-transition-base);
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0.1875rem;
+      border-radius: inherit;
+      background-color: var(--moo-color-primary);
+      transform: scale(0.5);
+      opacity: 0;
+      transition: transform var(--moo-transition-fast), opacity var(--moo-transition-fast);
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  &__text {
+    line-height: var(--moo-line-height-normal);
+  }
+
+  &__option-hint {
+    color: var(--moo-color-foreground-muted);
+    font-size: var(--moo-font-size-xs);
+  }
+}

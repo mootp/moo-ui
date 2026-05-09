@@ -1,4 +1,6 @@
 <div class="demo-root">
+  <moo-toast-viewport />
+
   <header class="demo-header">
     <h1>@mootp/moo-ui · Component Demo</h1>
     <moo-badge variant="primary">v0.1.0</moo-badge>
@@ -30,7 +32,7 @@
     <!-- Input -->
     <section class="demo-section">
       <h2>Input</h2>
-      <div style="max-width: 24rem; display: flex; flex-direction: column; gap: 1rem;">
+      <div class="demo-stack demo-stack--narrow">
         <moo-input
           label="Email"
           type="email"
@@ -41,6 +43,73 @@
         />
         <moo-input label="Password" type="password" placeholder="••••••••" error="Password is too short." />
         <moo-input label="Required field" [required]="true" placeholder="Cannot be empty" />
+      </div>
+    </section>
+
+    <section class="demo-section">
+      <h2>Select</h2>
+      <div class="demo-stack demo-stack--narrow">
+        <moo-select
+          label="Owning team"
+          hint="Disabled options stay visible but cannot be selected."
+          [options]="teamOptions"
+          [ngModel]="selectValue()"
+          (ngModelChange)="selectValue.set($event)"
+        />
+        <moo-select
+          label="Escalation path"
+          placeholder="Pick a destination"
+          error="A destination is required before continuing."
+          [required]="true"
+          [options]="teamOptions"
+        />
+      </div>
+    </section>
+
+    <section class="demo-section">
+      <h2>Textarea</h2>
+      <div class="demo-stack demo-stack--narrow">
+        <moo-textarea
+          label="Notes"
+          hint="Supports the same forms API as the other controls."
+          [rows]="5"
+          [ngModel]="notesValue()"
+          (ngModelChange)="notesValue.set($event)"
+        />
+        <moo-textarea
+          label="Readonly summary"
+          [readonly]="true"
+          size="sm"
+          [rows]="3"
+          [ngModel]="notesValue()"
+        />
+      </div>
+    </section>
+
+    <section class="demo-section">
+      <h2>Checkbox / Radio / Toggle</h2>
+      <div class="demo-grid">
+        <moo-checkbox
+          label="Include private notes"
+          hint="Visible to admins only."
+          [ngModel]="checkboxValue()"
+          (ngModelChange)="checkboxValue.set($event)"
+        />
+
+        <moo-radio
+          label="Notification channel"
+          hint="Arrow keys move through the group."
+          [options]="notificationOptions"
+          [ngModel]="radioValue()"
+          (ngModelChange)="radioValue.set($event)"
+        />
+
+        <moo-toggle
+          label="Incident digest"
+          hint="Turns daily summary delivery on or off."
+          [ngModel]="toggleValue()"
+          (ngModelChange)="toggleValue.set($event)"
+        />
       </div>
     </section>
 
@@ -74,7 +143,7 @@
     <!-- Alert -->
     <section class="demo-section">
       <h2>Alert</h2>
-      <div style="display: flex; flex-direction: column; gap: 0.75rem; max-width: 36rem;">
+      <div class="demo-stack demo-stack--wide">
         <moo-alert variant="info" title="Information">This is an informational message.</moo-alert>
         <moo-alert variant="success" title="Success!">Your changes have been saved.</moo-alert>
         <moo-alert variant="warning" title="Warning" [dismissible]="true">Please review before continuing.</moo-alert>
@@ -85,7 +154,7 @@
     <!-- Spinner -->
     <section class="demo-section">
       <h2>Spinner</h2>
-      <div class="demo-row" style="align-items: center;">
+      <div class="demo-row demo-row--center">
         <moo-spinner size="xs" />
         <moo-spinner size="sm" />
         <moo-spinner size="md" />
@@ -97,7 +166,7 @@
     <!-- Avatar -->
     <section class="demo-section">
       <h2>Avatar</h2>
-      <div class="demo-row" style="align-items: center;">
+      <div class="demo-row demo-row--center">
         <moo-avatar initials="JD" size="xs" />
         <moo-avatar initials="AB" size="sm" />
         <moo-avatar initials="CD" size="md" />
@@ -126,6 +195,38 @@
           <moo-button variant="danger" (clicked)="modalOpen.set(false)">Confirm</moo-button>
         </div>
       </moo-modal>
+    </section>
+
+    <section class="demo-section">
+      <h2>Dropdown / Tooltip / Toast</h2>
+      <div class="demo-overlay-grid">
+        <div class="demo-stack">
+          <moo-dropdown
+            label="Quick actions"
+            hint="Uses a reusable connected overlay pattern."
+            buttonLabel="Open actions"
+            [items]="menuItems"
+            (itemSelected)="handleMenuSelect($event)"
+          />
+          <moo-badge variant="secondary">{{ lastMenuAction() }}</moo-badge>
+        </div>
+
+        <div class="demo-stack">
+          <moo-tooltip text="Tooltips open on hover and keyboard focus.">
+            <moo-button variant="outline">Hover or focus me</moo-button>
+          </moo-tooltip>
+          <p class="demo-muted">
+            Overlay components keep their own focus and dismissal handling explicit.
+          </p>
+        </div>
+
+        <div class="demo-row">
+          <moo-button variant="secondary" (clicked)="showToast('info')">Info toast</moo-button>
+          <moo-button variant="primary" (clicked)="showToast('success')">Success toast</moo-button>
+          <moo-button variant="outline" (clicked)="showToast('warning')">Warning toast</moo-button>
+          <moo-button variant="danger" (clicked)="showToast('danger')">Danger toast</moo-button>
+        </div>
+      </div>
     </section>
 
   </main>

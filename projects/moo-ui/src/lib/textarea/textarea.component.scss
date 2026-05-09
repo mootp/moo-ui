@@ -1,0 +1,35 @@
+@use '../shared/styles/form-field' as form;
+
+.moo-textarea-field {
+  @include form.field-wrapper;
+
+  &__label {
+    @include form.field-label;
+  }
+
+  &__message {
+    @include form.field-message;
+  }
+}
+
+.moo-textarea {
+  @include form.control-base;
+  min-height: 6rem;
+  line-height: var(--moo-line-height-normal);
+
+  &--sm { @include form.control-size(sm); }
+  &--md { @include form.control-size(md); }
+  &--lg { @include form.control-size(lg); }
+
+  &--resize-none { resize: none; }
+  &--resize-vertical { resize: vertical; }
+  &--resize-both { resize: both; }
+
+  &.has-error {
+    border-color: var(--moo-color-danger);
+
+    &:focus-visible {
+      box-shadow: 0 0 0 3px rgb(239 68 68 / 0.2);
+    }
+  }
+}

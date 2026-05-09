@@ -1,0 +1,23 @@
+<span
+  #trigger
+  class="moo-tooltip-trigger"
+  (mouseenter)="show()"
+  (mouseleave)="hide()"
+  (focusin)="show()"
+  (focusout)="hide()"
+>
+  <ng-content />
+</span>
+
+@if (isVisible()) {
+  <div
+    #panel
+    [id]="tooltipId"
+    class="moo-tooltip"
+    role="tooltip"
+    [style.top.px]="overlayTop()"
+    [style.left.px]="overlayLeft()"
+  >
+    {{ text() }}
+  </div>
+}
