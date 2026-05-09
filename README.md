@@ -218,6 +218,7 @@ The demo app is prepared for static hosting on GitHub Pages:
 - `npm run build:pages` builds the demo and prepares `dist/github-pages`
 - `.github/workflows/github-pages.yml` publishes the artifact from `main`
 - `scripts/prepare-pages.mjs` adds `.nojekyll` and `404.html` for Pages-friendly static hosting
+- Before the first successful run, enable **Settings > Pages > Source: GitHub Actions** for the repository. Without that one-time repo setting, `actions/configure-pages` returns `404 Not Found`.
 
 If you need to publish manually:
 

@@ -25,3 +25,4 @@
 [2026-05-09T00:00:00Z] Moved project directory from `C:\sourcecode\github\copilot\moo-ui` to `C:\sourcecode\github\copilot\workspaces\moo-ui`. Verified the new path exists and counted 72 child items (52 files, 20 directories).
 
 9. Installed pwsh support, removed the old workspace path at C:\sourcecode\github\copilot\moo-ui, initialized a standalone git repository in C:\sourcecode\github\copilot\workspaces\moo-ui, and prepared the GitHub remote https://github.com/mootp/moo-ui.git.
+10. Adjusted the GitHub Pages workflow documentation after the first workflow run failed at `actions/configure-pages@v5` with `404 Not Found`; the repository still needs the one-time **Settings > Pages > Source: GitHub Actions** enablement in GitHub before the workflow can succeed.
