@@ -1,0 +1,38 @@
+@if (open()) {
+  <div
+    #backdrop
+    class="moo-modal"
+    (click)="onBackdropClick()"
+    (keydown)="onKeydown($event)"
+    role="dialog"
+    aria-modal="true"
+    [attr.aria-label]="title() || 'Dialog'"
+    tabindex="-1"
+  >
+    <div #dialog [class]="dialogClass()" (click)="stopPropagation($event)">
+      @if (title()) {
+        <div class="moo-modal__header">
+          <h2 class="moo-modal__title">{{ title() }}</h2>
+          <button
+            type="button"
+            class="moo-modal__close"
+            (click)="closed.emit()"
+            aria-label="Close dialog"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      }
+
+      <div class="moo-modal__body">
+        <ng-content />
+      </div>
+
+      <div class="moo-modal__footer">
+        <ng-content select="[moo-modal-footer]" />
+      </div>
+    </div>
+  </div>
+}

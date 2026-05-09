@@ -1,0 +1,59 @@
+.moo-badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--moo-font-sans);
+  font-weight: var(--moo-font-weight-medium);
+  border-radius: var(--moo-radius-md);
+  border: 1px solid transparent;
+  white-space: nowrap;
+
+  &--pill { border-radius: var(--moo-radius-full); }
+
+  /* ── Sizes ── */
+  &--sm {
+    padding: 0.125rem 0.5rem;
+    font-size: var(--moo-font-size-xs);
+  }
+
+  &--md {
+    padding: 0.25rem 0.625rem;
+    font-size: var(--moo-font-size-xs);
+  }
+
+  /* ── Variants ── */
+  &--default {
+    background-color: var(--moo-color-surface);
+    color: var(--moo-color-foreground-muted);
+    border-color: var(--moo-color-border);
+  }
+
+  &--primary {
+    background-color: var(--moo-color-primary-light);
+    color: var(--moo-color-primary-dark);
+  }
+
+  &--secondary {
+    background-color: var(--moo-color-secondary-light);
+    color: var(--moo-color-secondary-dark);
+  }
+
+  &--success {
+    background-color: var(--moo-color-success-bg);
+    color: var(--moo-color-success-text);
+  }
+
+  &--warning {
+    background-color: var(--moo-color-warning-bg);
+    color: var(--moo-color-warning-text);
+  }
+
+  &--danger {
+    background-color: var(--moo-color-danger-bg);
+    color: var(--moo-color-danger-text);
+  }
+
+  &--info {
+    background-color: var(--moo-color-info-bg);
+    color: var(--moo-color-info-text);
+  }
+}

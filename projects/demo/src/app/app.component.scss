@@ -1,0 +1,47 @@
+.demo-root {
+  min-height: 100vh;
+  background-color: var(--moo-color-background);
+}
+
+.demo-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--moo-color-border);
+  background-color: var(--moo-color-surface-elevated);
+  box-shadow: var(--moo-shadow-sm);
+
+  h1 {
+    margin: 0;
+    font-size: var(--moo-font-size-xl);
+    font-weight: var(--moo-font-weight-bold);
+    color: var(--moo-color-foreground);
+  }
+}
+
+.demo-main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.demo-section {
+  margin-bottom: 3rem;
+
+  h2 {
+    margin: 0 0 1rem;
+    font-size: var(--moo-font-size-lg);
+    font-weight: var(--moo-font-weight-semibold);
+    color: var(--moo-color-foreground);
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--moo-color-border);
+  }
+}
+
+.demo-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}

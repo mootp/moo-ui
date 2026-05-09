@@ -1,0 +1,31 @@
+@if (visible()) {
+  <div [class]="alertClass()" role="alert">
+    <svg
+      class="moo-alert__icon"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      aria-hidden="true"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="iconPath()" />
+    </svg>
+
+    <div class="moo-alert__content">
+      @if (title()) {
+        <h4 class="moo-alert__title">{{ title() }}</h4>
+      }
+      <div class="moo-alert__body">
+        <ng-content />
+      </div>
+    </div>
+
+    @if (dismissible()) {
+      <button type="button" class="moo-alert__dismiss" (click)="dismiss()" aria-label="Dismiss alert">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    }
+  </div>
+}

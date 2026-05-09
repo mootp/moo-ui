@@ -1,0 +1,112 @@
+.moo-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--moo-font-sans);
+  font-weight: var(--moo-font-weight-medium);
+  border: 1px solid transparent;
+  border-radius: var(--moo-radius-md);
+  cursor: pointer;
+  transition: background-color var(--moo-transition-base),
+              border-color var(--moo-transition-base),
+              color var(--moo-transition-base),
+              box-shadow var(--moo-transition-base);
+  white-space: nowrap;
+  line-height: 1;
+  text-decoration: none;
+  user-select: none;
+
+  &:focus-visible {
+    outline: 2px solid var(--moo-color-primary);
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  /* ── Sizes ── */
+  &--sm {
+    height: 2rem;
+    padding: 0 0.75rem;
+    font-size: var(--moo-font-size-xs);
+  }
+
+  &--md {
+    height: 2.5rem;
+    padding: 0 1rem;
+    font-size: var(--moo-font-size-sm);
+  }
+
+  &--lg {
+    height: 3rem;
+    padding: 0 1.5rem;
+    font-size: var(--moo-font-size-base);
+  }
+
+  /* ── Variants ── */
+  &--primary {
+    background-color: var(--moo-color-primary);
+    color: var(--moo-color-on-primary);
+
+    &:hover:not(:disabled) {
+      background-color: var(--moo-color-primary-dark);
+    }
+  }
+
+  &--secondary {
+    background-color: var(--moo-color-secondary);
+    color: var(--moo-color-on-secondary);
+
+    &:hover:not(:disabled) {
+      background-color: var(--moo-color-secondary-dark);
+    }
+  }
+
+  &--outline {
+    background-color: transparent;
+    border-color: var(--moo-color-border-strong);
+    color: var(--moo-color-foreground);
+
+    &:hover:not(:disabled) {
+      background-color: var(--moo-color-surface);
+    }
+  }
+
+  &--ghost {
+    background-color: transparent;
+    border-color: transparent;
+    color: var(--moo-color-foreground);
+
+    &:hover:not(:disabled) {
+      background-color: var(--moo-color-surface);
+    }
+  }
+
+  &--danger {
+    background-color: var(--moo-color-danger);
+    color: #fff;
+
+    &:hover:not(:disabled) {
+      background-color: var(--moo-color-danger-dark);
+    }
+  }
+
+  /* ── Loading spinner ── */
+  &__spinner {
+    width: 1em;
+    height: 1em;
+    animation: moo-spin 0.75s linear infinite;
+    flex-shrink: 0;
+  }
+
+  &__spinner-track { opacity: 0.25; }
+  &__spinner-arc   { opacity: 0.75; }
+}
+
+@keyframes moo-spin {
+  to { transform: rotate(360deg); }
+}

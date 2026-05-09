@@ -1,0 +1,37 @@
+.moo-spinner {
+  display: inline-flex;
+
+  svg { animation: moo-spin 0.75s linear infinite; }
+
+  &__track { opacity: 0.25; }
+  &__arc   { opacity: 0.75; }
+
+  /* ── Sizes ── */
+  &--xs svg { width: 0.875rem; height: 0.875rem; }
+  &--sm svg { width: 1.25rem;  height: 1.25rem; }
+  &--md svg { width: 1.75rem;  height: 1.75rem; }
+  &--lg svg { width: 2.5rem;   height: 2.5rem; }
+  &--xl svg { width: 3.5rem;   height: 3.5rem; }
+
+  /* ── Colour variants ── */
+  &--primary   { color: var(--moo-color-primary); }
+  &--secondary { color: var(--moo-color-secondary); }
+  &--white     { color: #fff; }
+  &--current   { color: currentColor; }
+
+  &__sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+}
+
+@keyframes moo-spin {
+  to { transform: rotate(360deg); }
+}

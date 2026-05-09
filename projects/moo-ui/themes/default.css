@@ -1,0 +1,140 @@
+/* @mootp/moo-ui – Design Tokens
+ * Import in your global stylesheet to apply the default theme.
+ * Override any variable in :root to customise the library.
+ */
+
+:root {
+  /* ─── Primary colour ─────────────────────────────── */
+  --moo-color-primary:       #3b82f6;
+  --moo-color-primary-dark:  #2563eb;
+  --moo-color-primary-light: #93c5fd;
+  --moo-color-on-primary:    #ffffff;
+
+  /* ─── Secondary colour ───────────────────────────── */
+  --moo-color-secondary:       #6b7280;
+  --moo-color-secondary-dark:  #4b5563;
+  --moo-color-secondary-light: #d1d5db;
+  --moo-color-on-secondary:    #ffffff;
+
+  /* ─── Semantic – success ─────────────────────────── */
+  --moo-color-success:      #10b981;
+  --moo-color-success-dark: #059669;
+  --moo-color-success-bg:   #d1fae5;
+  --moo-color-success-text: #065f46;
+
+  /* ─── Semantic – warning ─────────────────────────── */
+  --moo-color-warning:      #f59e0b;
+  --moo-color-warning-dark: #d97706;
+  --moo-color-warning-bg:   #fef3c7;
+  --moo-color-warning-text: #92400e;
+
+  /* ─── Semantic – danger ──────────────────────────── */
+  --moo-color-danger:      #ef4444;
+  --moo-color-danger-dark: #dc2626;
+  --moo-color-danger-bg:   #fee2e2;
+  --moo-color-danger-text: #991b1b;
+
+  /* ─── Semantic – info ────────────────────────────── */
+  --moo-color-info:      #3b82f6;
+  --moo-color-info-dark: #2563eb;
+  --moo-color-info-bg:   #dbeafe;
+  --moo-color-info-text: #1e40af;
+
+  /* ─── Surface / neutral ──────────────────────────── */
+  --moo-color-background:       #ffffff;
+  --moo-color-surface:          #f9fafb;
+  --moo-color-surface-elevated: #ffffff;
+  --moo-color-border:           #e5e7eb;
+  --moo-color-border-strong:    #d1d5db;
+
+  /* ─── Text ───────────────────────────────────────── */
+  --moo-color-foreground:        #111827;
+  --moo-color-foreground-muted:  #6b7280;
+  --moo-color-foreground-subtle: #9ca3af;
+
+  /* ─── Typography ─────────────────────────────────── */
+  --moo-font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+                   'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --moo-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+                   'Liberation Mono', 'Courier New', monospace;
+
+  --moo-font-size-xs:   0.75rem;   /* 12px */
+  --moo-font-size-sm:   0.875rem;  /* 14px */
+  --moo-font-size-base: 1rem;      /* 16px */
+  --moo-font-size-lg:   1.125rem;  /* 18px */
+  --moo-font-size-xl:   1.25rem;   /* 20px */
+
+  --moo-font-weight-normal:   400;
+  --moo-font-weight-medium:   500;
+  --moo-font-weight-semibold: 600;
+  --moo-font-weight-bold:     700;
+
+  --moo-line-height-tight:   1.25;
+  --moo-line-height-normal:  1.5;
+  --moo-line-height-relaxed: 1.75;
+
+  /* ─── Border radius ──────────────────────────────── */
+  --moo-radius-sm:   0.25rem;
+  --moo-radius-md:   0.375rem;
+  --moo-radius-lg:   0.5rem;
+  --moo-radius-xl:   0.75rem;
+  --moo-radius-2xl:  1rem;
+  --moo-radius-full: 9999px;
+
+  /* ─── Shadows ─────────────────────────────────────── */
+  --moo-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --moo-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --moo-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --moo-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+  /* ─── Z-index scale ──────────────────────────────── */
+  --moo-z-dropdown: 100;
+  --moo-z-sticky:   200;
+  --moo-z-overlay:  300;
+  --moo-z-modal:    400;
+  --moo-z-popover:  500;
+  --moo-z-tooltip:  600;
+
+  /* ─── Transitions ────────────────────────────────── */
+  --moo-transition-fast: 100ms ease;
+  --moo-transition-base: 150ms ease;
+  --moo-transition-slow: 300ms ease;
+}
+
+/* Dark mode – opt-in via [data-theme="dark"] or system preference */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --moo-color-background:       #0f172a;
+    --moo-color-surface:          #1e293b;
+    --moo-color-surface-elevated: #1e293b;
+    --moo-color-border:           #334155;
+    --moo-color-border-strong:    #475569;
+    --moo-color-foreground:        #f1f5f9;
+    --moo-color-foreground-muted:  #94a3b8;
+    --moo-color-foreground-subtle: #64748b;
+  }
+}
+
+[data-theme='dark'] {
+  --moo-color-background:       #0f172a;
+  --moo-color-surface:          #1e293b;
+  --moo-color-surface-elevated: #1e293b;
+  --moo-color-border:           #334155;
+  --moo-color-border-strong:    #475569;
+  --moo-color-foreground:        #f1f5f9;
+  --moo-color-foreground-muted:  #94a3b8;
+  --moo-color-foreground-subtle: #64748b;
+}
+
+/* Utility: visually-hidden accessible text */
+.moo-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

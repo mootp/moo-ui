@@ -1,0 +1,44 @@
+<div
+  class="moo-input-wrapper"
+  [class.has-error]="error()"
+  [class.is-focused]="isFocused()"
+  [class.is-disabled]="disabled() || isDisabled()"
+>
+  @if (label()) {
+    <label class="moo-input-label" [class.is-required]="required()">
+      <span>{{ label() }}</span>
+      <input
+        class="moo-input"
+        [id]="inputId() || null"
+        [type]="type()"
+        [placeholder]="placeholder()"
+        [disabled]="disabled() || isDisabled()"
+        [attr.readonly]="readonly() || null"
+        [required]="required()"
+        [value]="value()"
+        (input)="onInput($event)"
+        (focus)="onFocus()"
+        (blur)="onBlur()"
+      />
+    </label>
+  } @else {
+    <input
+      class="moo-input"
+      [id]="inputId() || null"
+      [type]="type()"
+      [placeholder]="placeholder()"
+      [disabled]="disabled() || isDisabled()"
+      [attr.readonly]="readonly() || null"
+      [required]="required()"
+      [value]="value()"
+      (input)="onInput($event)"
+      (focus)="onFocus()"
+      (blur)="onBlur()"
+    />
+  }
+  @if (error()) {
+    <p class="moo-input-message moo-input-message--error" role="alert">{{ error() }}</p>
+  } @else if (hint()) {
+    <p class="moo-input-message moo-input-message--hint">{{ hint() }}</p>
+  }
+</div>

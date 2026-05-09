@@ -1,0 +1,33 @@
+.moo-card {
+  background-color: var(--moo-color-surface-elevated);
+  border-radius: var(--moo-radius-lg);
+  overflow: hidden;
+  font-family: var(--moo-font-sans);
+
+  &.has-border { border: 1px solid var(--moo-color-border); }
+  &.has-shadow { box-shadow: var(--moo-shadow-md); }
+
+  /* ── Padding variants ── */
+  &--padding-none { padding: 0; }
+  &--padding-sm   { padding: 0.75rem; }
+  &--padding-md   { padding: 1.25rem; }
+  &--padding-lg   { padding: 2rem; }
+
+  /* ── Slotted header / footer ── */
+  [moo-card-header] {
+    display: block;
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid var(--moo-color-border);
+    font-weight: var(--moo-font-weight-semibold);
+    font-size: var(--moo-font-size-base);
+    color: var(--moo-color-foreground);
+  }
+
+  [moo-card-footer] {
+    display: block;
+    padding-top: 0.75rem;
+    margin-top: 0.75rem;
+    border-top: 1px solid var(--moo-color-border);
+  }
+}

@@ -1,0 +1,19 @@
+// Import Tailwind CSS layers
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// Import Moo UI design tokens (adjust path after npm install)
+// @import '@mootp/moo-ui/themes/default';
+
+// During development – import from source
+@import '../../moo-ui/themes/default';
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--moo-font-sans);
+  background-color: var(--moo-color-background);
+  color: var(--moo-color-foreground);
+}

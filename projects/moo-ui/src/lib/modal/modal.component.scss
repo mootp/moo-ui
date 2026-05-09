@@ -1,0 +1,97 @@
+.moo-modal {
+  position: fixed;
+  inset: 0;
+  z-index: var(--moo-z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(0 0 0 / 0.5);
+  padding: 1rem;
+  overflow-y: auto;
+
+  /* ── Dialog panel ── */
+  &__dialog {
+    position: relative;
+    background-color: var(--moo-color-surface-elevated);
+    border-radius: var(--moo-radius-xl);
+    box-shadow: var(--moo-shadow-xl);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 2rem);
+
+    /* Sizes */
+    &--sm   { max-width: 24rem; }
+    &--md   { max-width: 32rem; }
+    &--lg   { max-width: 48rem; }
+    &--xl   { max-width: 64rem; }
+    &--full { max-width: 100%; height: calc(100vh - 2rem); }
+  }
+
+  /* ── Header ── */
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--moo-color-border);
+    flex-shrink: 0;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: var(--moo-font-size-lg);
+    font-weight: var(--moo-font-weight-semibold);
+    color: var(--moo-color-foreground);
+    font-family: var(--moo-font-sans);
+    line-height: var(--moo-line-height-tight);
+  }
+
+  &__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    border: none;
+    border-radius: var(--moo-radius-md);
+    background: transparent;
+    cursor: pointer;
+    color: var(--moo-color-foreground-muted);
+    flex-shrink: 0;
+    transition: background-color var(--moo-transition-base), color var(--moo-transition-base);
+
+    svg { width: 1.25rem; height: 1.25rem; }
+
+    &:hover {
+      background-color: var(--moo-color-surface);
+      color: var(--moo-color-foreground);
+    }
+  }
+
+  /* ── Body ── */
+  &__body {
+    padding: 1.5rem;
+    overflow-y: auto;
+    flex: 1;
+    font-family: var(--moo-font-sans);
+    color: var(--moo-color-foreground);
+    font-size: var(--moo-font-size-sm);
+    line-height: var(--moo-line-height-normal);
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--moo-color-border);
+    flex-shrink: 0;
+
+    &:empty {
+      display: none;
+    }
+  }
+}
