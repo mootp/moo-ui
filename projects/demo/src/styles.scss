@@ -3,12 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-// Import Moo UI design tokens (adjust path after npm install)
-// @import '@mootp/moo-ui/themes/default';
-
-// During development – import from source
-@import '../../moo-ui/themes/default';
-
 *, *::before, *::after { box-sizing: border-box; }
 
 body {

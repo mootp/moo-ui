@@ -29,6 +29,7 @@
               }
             ],
             "styles": [
+              "projects/moo-ui/themes/default.css",
               "projects/demo/src/styles.scss"
             ],
             "scripts": []
@@ -84,6 +85,7 @@
               }
             ],
             "styles": [
+              "projects/moo-ui/themes/default.css",
               "projects/demo/src/styles.scss"
             ],
             "scripts": []
